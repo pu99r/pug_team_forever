@@ -28,7 +28,10 @@ class Game {
     this.track = new Array(this.trackLength).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin; // Добавьте эту строку
-    if (this.hero.boomerang.position >= 0 && this.hero.boomerang.position < this.trackLength) {
+    if (
+      this.hero.boomerang.position >= 0 &&
+      this.hero.boomerang.position < this.trackLength
+    ) {
       this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
     }
   }
@@ -53,6 +56,10 @@ class Game {
         this.enemy.position = this.trackLength - 1;
       }
 
+      if (this.hero.position < 0) {
+        this.hero.position = 0;
+      }
+
       this.view.render(this.track);
     }, 100); // Вы можете настроить частоту обновления игрового цикла
   }
@@ -62,7 +69,7 @@ class Game {
       this.hero.die();
     }
 
-    if (this.boomerang.position === this.enemy.position) {
+    if (this.boomerang.position >= this.enemy.position) {
       this.enemy.die();
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
