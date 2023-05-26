@@ -1,10 +1,11 @@
 // Наш герой.
 
 class Hero {
-  constructor({ position, boomerang }) {
+  constructor({ position, boomerang, name }) {
     this.skin = '🤠';
     this.position = position;
     this.boomerang = boomerang;
+    this.name = name;
   }
 
   moveLeft() {
@@ -28,7 +29,7 @@ class Hero {
   die() {
     this.skin = '💀';
     console.log('YOU ARE DEAD!💀');
-    
+    console.log(this.name)
     process.exit();
   }
 }
