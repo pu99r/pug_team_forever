@@ -33,6 +33,7 @@ async function main(user, score) {
     order: [["points", "DESC"]],
   });
   console.log("YOU ARE DEAD!💀"+"\n");
+  console.log(`${user} score - ${score}` + "\n")
   for (let i = 0; i < playersnew.length; i++) {
     console.log(`${playersnew[i].name}` + " - " + `${playersnew[i].points}`);
   }
