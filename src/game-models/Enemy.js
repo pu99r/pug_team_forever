@@ -8,18 +8,15 @@ class Enemy {
 
   generateSkin() {
     const skins = [
-      '👾',
-      '💀',
+      '🐅',
+      '🦍',
       '👹',
-      '👻',
-      '👽',
-      '👿',
+      '🦨',
+      '🦝',
+      '🦖',
       '💩',
       '🤡',
-      '🤺',
-      '🧛',
-      '🧟',
-      '🎃',
+      '🦅',
     ];
     this.skin = skins[Math.floor(Math.random() * skins.length)];
   }
