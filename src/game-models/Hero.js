@@ -1,4 +1,5 @@
 // Наш герой.
+const main2 = require("../../app.js")
 
 class Hero {
   constructor({ position, boomerang, name }) {
@@ -26,10 +27,10 @@ class Hero {
     }
   }
 
-  die() {
-    this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
-    console.log(this.name)
+  async die() {
+    this.skin = "💀";
+    console.log("YOU ARE DEAD!💀");
+    await main2(`${this.name}`, 44);
     process.exit();
   }
 }

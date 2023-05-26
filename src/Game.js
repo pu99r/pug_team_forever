@@ -61,7 +61,6 @@ class Game {
     this.hero.name = registratePlayer();
     setInterval(() => {
       // Let's play!
-      sound.play('./src/sounds/fonsound.wav');
       this.handleCollisions();
       this.regenerateTrack();
 
