@@ -48,6 +48,9 @@ class Game {
   }
 
   play() {
+    sound.play("./src/sounds/fonsound.wav", (err) => {
+      if (err) throw err;
+    })
     function registratePlayer() {
       let playerName = readlineSync.question(
         'Здравствуйте! Введите ваше имя: '
@@ -86,6 +89,9 @@ class Game {
     }
 
     if (this.boomerang.position >= this.enemy.position) {
+      sound.play("./src/sounds/die.wav", (err) => {
+        if (err) throw err;
+      })
       this.enemy.die();
       this.hero.points += 1
       console.log(this.hero.playerName)
