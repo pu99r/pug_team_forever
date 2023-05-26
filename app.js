@@ -38,5 +38,4 @@ async function main(user, score) {
   }
   console.log("\n");
 }
-main("КАтя", 100)
 module.exports = main;
