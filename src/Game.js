@@ -2,6 +2,7 @@
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
 
+const sound = require('play-sound')(opts = {});
 const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
 // const Boomerang = require('./game-models/Boomerang');
@@ -45,6 +46,7 @@ class Game {
   play() {
     setInterval(() => {
       // Let's play!
+      sound.play('./src/sounds/fonsound.wav');
       this.handleCollisions();
       this.regenerateTrack();
 
