@@ -87,6 +87,7 @@ class Game {
 
     if (this.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      this.hero.points += 1
       console.log(this.hero.playerName)
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;

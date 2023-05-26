@@ -2,11 +2,12 @@
 const main2 = require("../../app.js")
 
 class Hero {
-  constructor({ position, boomerang, name }) {
+  constructor({ position, boomerang, name, points = 0}) {
     this.skin = '🤠';
     this.position = position;
     this.boomerang = boomerang;
     this.name = name;
+    this.points = points;
   }
 
   moveLeft() {
@@ -30,7 +31,7 @@ class Hero {
   async die() {
     this.skin = "💀";
     console.log("YOU ARE DEAD!💀");
-    await main2(`${this.name}`, 44);
+    await main2(`${this.name}`, `${this.points}`);
     process.exit();
   }
 }
