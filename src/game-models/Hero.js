@@ -20,12 +20,26 @@ class Hero {
     // Идём вправо.
     this.position += 1;
   }
+  down() {
+    if ( this.position < 30 ) {
+      let p = this.position
+      this.position = 30 + p
+    }
+   
+  }
+  up() {
+    if ( this.position > 30 ) {
+      this.position -= 31
+    }
+    
+  }
 
   attack() {
     // Атакуем.
     sound.play("./src/sounds/congratulations.wav", (err) => {
       if (err) throw err;
     })
+
     if (this.boomerang.position + 1 + this.position === this.position) {
       this.boomerang.position = this.position + 1; // Устанавливаем начальную позицию бумеранга
       this.boomerang.fly();

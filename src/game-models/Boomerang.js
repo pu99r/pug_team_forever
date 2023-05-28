@@ -6,7 +6,7 @@ class Boomerang {
   constructor(trackLength) {
     this.skin = '🥜';
     this.position = -1;
-    this.trackLength = trackLength;
+    this.trackLength = trackLength * 2;
   }
 
   fly() {

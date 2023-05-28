@@ -30,7 +30,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = new Array(this.trackLength).fill(' ');
+    this.track = new Array(this.trackLength*2).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin; // Добавьте эту строку
     if (
@@ -48,9 +48,9 @@ class Game {
   }
 
   play() {
-    sound.play("./src/sounds/fonsound.wav", (err) => {
-      if (err) throw err;
-    })
+    // sound.play("./src/sounds/fonsound.wav", (err) => {
+    //   if (err) throw err;
+    // })
     function registratePlayer() {
       let playerName = readlineSync.question(
         'Здравствуйте! Введите ваше имя: '
@@ -72,7 +72,8 @@ class Game {
 
       // Если враг достиг края трека, перемещаем его в начало
       if (this.enemy.position < 0) {
-        this.enemy.position = this.trackLength - 1;
+        this.enemy.die();
+        this.enemy = new Enemy(this.trackLength);
       }
 
       if (this.hero.position < 0) {
@@ -88,11 +89,12 @@ class Game {
       this.hero.die();
     }
 
-    if (this.boomerang.position >= this.enemy.position) {
+    if (this.boomerang.position == this.enemy.position || this.boomerang.position == this.enemy.position+1) {
       sound.play("./src/sounds/die.wav", (err) => {
         if (err) throw err;
       })
       this.enemy.die();
+      
       this.hero.points += 1
       console.log(this.hero.playerName)
       // Обнуляем позицию бумеранга после столкновения с врагом
