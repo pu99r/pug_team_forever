@@ -11,6 +11,7 @@ async function addUser(name, score) {
   }
 }
 async function main(user, score) {
+  console.clear()
   const players = await User.findAll({
     raw: true,
   });
