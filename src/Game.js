@@ -1,7 +1,7 @@
 // Импортируем всё необходимое.
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
-const sound = require('play-sound')(opts = {});
+const sound = require('play-sound')((opts = {}));
 const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
 const readlineSync = require('readline-sync');
@@ -30,7 +30,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = new Array(this.trackLength*2).fill(' ');
+    this.track = new Array(this.trackLength * 2).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin; // Добавьте эту строку
     if (
@@ -48,9 +48,9 @@ class Game {
   }
 
   play() {
-    // sound.play("./src/sounds/fonsound.wav", (err) => {
-    //   if (err) throw err;
-    // })
+    sound.play('./src/sounds/fonsound.wav', (err) => {
+      if (err) throw err;
+    });
     function registratePlayer() {
       let playerName = readlineSync.question(
         'Здравствуйте! Введите ваше имя: '
@@ -59,7 +59,7 @@ class Game {
       if (!playerName) {
         playerName = 'Player';
       }
-      return playerName
+      return playerName;
     }
     this.hero.name = registratePlayer();
     setInterval(() => {
@@ -89,14 +89,17 @@ class Game {
       this.hero.die();
     }
 
-    if (this.boomerang.position == this.enemy.position || this.boomerang.position == this.enemy.position+1) {
-      sound.play("./src/sounds/die.wav", (err) => {
+    if (
+      this.boomerang.position == this.enemy.position ||
+      this.boomerang.position == this.enemy.position + 1
+    ) {
+      sound.play('./src/sounds/die.wav', (err) => {
         if (err) throw err;
-      })
+      });
       this.enemy.die();
-      
-      this.hero.points += 1
-      console.log(this.hero.playerName)
+
+      this.hero.points += 1;
+      console.log(this.hero.playerName);
       // Обнуляем позицию бумеранга после столкновения с врагом
       // this.boomerang.position = -1;
       this.enemy = new Enemy(this.trackLength); // Создаем нового врага
