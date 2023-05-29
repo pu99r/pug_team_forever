@@ -4,21 +4,21 @@
 
 class Boomerang {
   constructor(trackLength) {
-    this.skin = '🌀';
+    this.skin = '🥜';
     this.position = -1;
-    this.trackLength = trackLength;
+    this.trackLength = trackLength * 2;
   }
 
   fly() {
     const distance = 5; // Устанавливаем дистанцию полета бумеранга
 
     // Запускаем бумеранг на заданное расстояние
-    for (let i = 1; i <= distance; i++) {
+    for (let i = 1; i <= distance; i += 1) {
       setTimeout(() => this.moveRight(1), 100 * i);
     }
 
     // Возвращаем бумеранг на заданное расстояние
-    for (let i = 1; i <= distance; i++) {
+    for (let i = 1; i <= distance; i += 1) {
       setTimeout(() => this.moveLeft(1), 100 * (distance + i));
     }
 
